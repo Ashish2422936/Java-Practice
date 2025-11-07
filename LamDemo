@@ -1,0 +1,19 @@
+class myDemoLambda{
+    void display();
+}
+class Demo{
+    public void method1(){
+        myDemoLambda l = new myDemoLambda();
+
+    }
+}
+
+class LamDemo{
+    public static void main(String args[])
+    {
+
+    }
+};
+
+
+
