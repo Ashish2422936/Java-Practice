@@ -1,23 +1,28 @@
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.SequenceInputStream;
 
 class StreamPractice{
     public static void main(String args[])
     {
-        try{
-            FileOutputStream fos = new FileOutputStream("C:/Users/2422936/OneDrive - Cognizant/Desktop/Java Practice");
-        String str = " Hey Ashish,updating the text file";
-
-        fos.write(str.getBytes());
+    // FileInputStream fis = new FileInputStream("file location");
+    // byte[] b = new byte[fis.available()];
+    // fis.read();
+    // String str  = new String(b);
+    try(FileInputStream fis1=new FileInputStream("C:/Users/2422936/OneDrive - Cognizant/Desktop/Java Practice/test.txt");
+    FileInputStream fis2=new FileInputStream("C:/Users/2422936/OneDrive - Cognizant/Desktop/Java Practice/test1.txt");
+    FileOutputStream fos = new FileOutputStream("C:/Users/2422936/OneDrive - Cognizant/Desktop/Java Practice/Destination.txt");
+    SequenceInputStream sis = new SequenceInputStream(fis1,fis2)
+    )
+    {
+        
+        int a;
+        while((a=sis.read()) != -1){
+            fos.write(a);
         }
-        catch(FileNotFoundException e)
-        {
-            System.out.println(e);
-        }
-        catch(IOException e)
-        {
-            System.out.println(e);
-        }
+    }
+    catch(Exception e){
+        System.out.println(e);
+    }
     }
 }
